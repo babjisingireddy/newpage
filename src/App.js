@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import myImage from "./myPic2.jpeg";
+import myImage from "./blueHoodie.jpg";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
 import myLinkedin from "./linkedIn.png";
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className={darkMode ? "dark-mode" : "light-mode"}>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container">
           <a className="navbar-brand" href="#home">Babji's Portfolio</a>
           <a className="nav-link" href="https://www.linkedin.com/in/babji-reactjs" 
@@ -60,7 +60,7 @@ function App() {
           {/* Left Side: Image */}
           <div className="col-md-6 text-center left-header">
             <div>
-              <img src={myImage} alt="Babji" className="col-md-3 profile-photo"  />
+              <img src={myImage} alt="Babji" className="profile-photo"  />
             </div>
           </div>
           
@@ -134,6 +134,9 @@ function App() {
           <button type="submit" className="btn btn-primary">Send Message</button>
         </form>
       </section>
+
+      {/* {footer-section} */}
+      <footer className="footer"><b>NOTE:</b> My typical react out time for the guys who submits the contact form is around 72hrs.</footer>
     </div>
   );
 }

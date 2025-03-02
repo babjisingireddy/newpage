@@ -9,6 +9,9 @@
   background-color: #121212;
   color: #ffffff;
   transition: all 0.3s ease-in-out;
+  background: url('./bgimage2.png') no-repeat center center fixed;
+  background-size: cover;
+
 }
 
 /* Navbar Styling */
@@ -39,7 +42,7 @@
 
 /* Sections Styling */
 section {
-  padding: 60px 0;
+  padding: 20px 0;
 }
 
 h2 {
@@ -98,12 +101,12 @@ form .btn {
 .profile-photo {
   width: 400px; /* Adjust as needed */
   height: 500px;
-  object-fit: cover;
-  border-radius: 10px; /* Slightly rounded edges */
+  /* object-fit: cover; */
+  border-radius: 100px; /* Slightly rounded edges */
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
-  border: none; /* Ensures no border */
-  outline: none; /* Removes focus outline */
-  transition: transform 0.3s ease-in-out;
+  border: none !important; /* Ensures no border */
+  outline: none !important; /* Removes focus outline */
+  /* transition: transform 0.3s ease-in-out; */
 }
 .profile-photo:hover {
   transform: scale(1.05); /* Slight zoom effect on hover */
@@ -128,6 +131,15 @@ form .btn {
   /* position: relative; */
 }
 
+.footer {
+  background-color: #2f3202;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
 /* .row {
   gap: 100px; 
 } */
@@ -137,5 +149,71 @@ form .btn {
 @media (max-width: 768px) {
   #home h1 {
     font-size: 2rem;
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .left-header {
+    padding-left: 5rem; /* Reduce padding on smaller screens */
+  }
+  .right-header {
+    padding-right: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .left-header, .right-header {
+    padding: 1rem; /* Reduce padding for smaller screens */
+    text-align: center; /* Center align text */
+  }
+
+  /* Stack image and text vertically */
+  .row {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px; /* Add spacing between text and image */
+  }
+
+  .profile-photo {
+    width: 80%; /* Scale image for mobile */
+    height: auto;
+  }
+
+  #home h1 {
+    font-size: 1.8rem; /* Reduce font size */
+  }
+
+  #home p {
+    font-size: 1rem; /* Adjust paragraph size */
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Align toggle button */
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  #home h1 {
+    font-size: 1.5rem;
+  }
+
+  #home p {
+    font-size: 0.9rem;
+  }
+
+  .profile-photo {
+    width: 90%; /* Ensure image fits well */
+  }
+
+  .btn-primary {
+    font-size: 0.9rem; /* Adjust button size */
+    padding: 10px 15px;
+  }
+
+  section {
+    padding: 40px 0; /* Reduce section padding */
   }
 }
