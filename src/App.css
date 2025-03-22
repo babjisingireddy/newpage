@@ -121,7 +121,7 @@ form .btn {
 .left-header {
   display: flex;
   flex-direction: column;
-  padding-left: 15rem;
+  padding-left: 1rem;
   /* background-color:darkslategray */
   /* -webkit-box-align: center; */
   /* align-items: center; */
@@ -137,10 +137,19 @@ form .btn {
   opacity: 0.8;
 }
 
-/* .row {
-  gap: 100px; 
-} */
-
+.card-container{
+  display: flex;
+    flex-wrap: wrap; /* Wraps to next line if not enough space */
+    justify-content: center; /* Centers the cards */
+    gap: 20px; /* Adds spacing between cards */
+}
+.card {
+  width: 300px; /* Set fixed width */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -158,6 +167,10 @@ form .btn {
   .right-header {
     padding-right: 5rem;
   }
+  .profile-photo {
+    width: 290px; /* Scale image for mobile */
+    height: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -174,7 +187,7 @@ form .btn {
   }
 
   .profile-photo {
-    width: 80%; /* Scale image for mobile */
+    width: 70%; /* Scale image for mobile */
     height: auto;
   }
 
@@ -189,6 +202,12 @@ form .btn {
   .navbar-toggler {
     margin-left: auto; /* Align toggle button */
   }
+  .left-header {
+    padding-left: 5rem; /* Reduce padding on smaller screens */
+  }
+  .right-header {
+    padding-right: 5rem;
+  }
 }
 
 /* Mobile adjustments */
@@ -202,7 +221,7 @@ form .btn {
   }
 
   .profile-photo {
-    width: 90%; /* Ensure image fits well */
+    width: 70%; /* Ensure image fits well */
   }
 
   .btn-primary {
@@ -211,6 +230,15 @@ form .btn {
   }
 
   section {
-    padding: 40px 0; /* Reduce section padding */
+    padding: 20px 0; /* Reduce section padding */
+  }
+
+  .footer {
+    background-color: #2f3202;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    opacity: 0.8;
   }
 }

@@ -8,6 +8,9 @@ import myLinkedin from "./linkedIn.png";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [projects, setProjects] = useState([]);
+  const [messageSent, setMessageSent] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -17,14 +20,11 @@ function App() {
       e.target,
       "l8LO8dSSK3QY9fold"  // Replace with your EmailJS public key
     )
-    .then(
-      (result) => {
-        alert("Message sent successfully!");
-      },
-      (error) => {
-        alert("Failed to send message. Try again!");
-      }
-    );
+    .then((result) => {
+      setMessageSent(true);
+    }).catch(() => {
+      alert("Failed to send message. Try again!");
+    });
   
     e.target.reset();
   };
@@ -37,15 +37,17 @@ function App() {
           <a className="navbar-brand" href="#home">Babji's Portfolio</a>
           <a className="nav-link" href="https://www.linkedin.com/in/babji-reactjs" 
               target="_blank" rel="noopener noreferrer"><img src={myLinkedin} alt="linkedin" className="rounded-circle img-fluid" width="30"/></a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon">hhh</span>
+          <button className="navbar-toggler" type="button"  onClick={() => setIsNavOpen(!isNavOpen)}>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          {/* <div className={`sidebar ${isNavOpen ? "open" : ""}`}  id="navbarNav"> */}
+          {/* <button className="close-btn" onClick={() => setIsNavOpen(false)}>&times;</button> */}
+          <div className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`} id="navbarNav">
             <ul className="navbar-nav ms-auto">
-              <li className="nav-item"><a className="nav-link" href="#home">Home</a></li>
-              <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
-              <li className="nav-item"><a className="nav-link" href="#projects">Projects</a></li>
-              <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+              <li className="nav-item"><a className="nav-link" href="#home" onClick={() => setIsNavOpen(false)}>Home</a></li>
+              <li className="nav-item"><a className="nav-link" href="#about" onClick={() => setIsNavOpen(false)}>About</a></li>
+              <li className="nav-item"><a className="nav-link" href="#projects" onClick={() => setIsNavOpen(false)}>Projects</a></li>
+              <li className="nav-item"><a className="nav-link" href="#contact" onClick={() => setIsNavOpen(false)}>Contact</a></li>
             </ul>
             <button className="btn btn-outline-light ms-3" onClick={() => setDarkMode(!darkMode)}>
               {darkMode ? "Light Mode" : "Dark Mode"}
@@ -112,13 +114,40 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="container mt-5">
         <h2>Projects</h2>
-        <p>Showcase your React projects here.</p>
+        <div className="card-container">
+          {projects.length>0 ? <div>
+        {projects.map((e)=>{
+          return(
+            
+            
+              <div className="card">
+                <h3>Project 1</h3>
+                <p>Description of project 1</p>
+              </div>              
+          )
+          
+        })}
+        </div>
+        :
+          <div className="d-flex justify-content-center align-items-center vh-10">
+            <div className="spinner-grow text-success" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+      }
+        </div>
+{/*         
+        <p>
+          {}
+          Loading...</p> */}
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="container mt-5 mb-5">
         <h2>Contact</h2>
         <form onSubmit={sendEmail}>
+        {messageSent && <div className="alert alert-success mt-3">Message sent successfully!</div>}
+
           <div className="mb-3">
             <label className="form-label">Name</label>
             <input type="text" name="from_name" className="form-control" placeholder="Your Name" required />
